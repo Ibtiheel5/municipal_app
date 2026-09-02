@@ -1,0 +1,364 @@
+/* src/pages/PrevisionPage.css */
+.prevision-page {
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.prevision-header {
+  margin-bottom: 2rem;
+}
+
+.prevision-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.prevision-header h1 svg {
+  width: 28px;
+  height: 28px;
+  stroke: #C8102E;
+}
+
+.prevision-header p {
+  color: #64748B;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-left: 40px;
+}
+
+/* ── Toolbar ── */
+.prevision-toolbar {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.prevision-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-train {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: #C8102E;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-train:hover:not(:disabled) {
+  background: #A50D25;
+}
+
+.btn-train:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-train svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+.btn-export {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: #F1F5F9;
+  color: #475569;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-export:hover:not(:disabled) {
+  background: #E2E8F0;
+}
+
+.btn-export:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-export svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+.prevision-steps {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.prevision-steps label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+}
+
+.prevision-steps select {
+  padding: 6px 12px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  background: white;
+}
+
+.prevision-steps select:focus {
+  border-color: #C8102E;
+  box-shadow: 0 0 0 3px rgba(200,16,46,0.1);
+}
+
+/* ── Stats ── */
+.prevision-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.prevision-stat-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.prevision-stat-card .prevision-stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.prevision-stat-card .prevision-stat-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-top: 4px;
+}
+
+.prevision-stat-highlight {
+  border-color: #C8102E;
+  background: #FEE2E8;
+}
+
+.prevision-stat-highlight .prevision-stat-value {
+  color: #C8102E;
+}
+
+/* ── Graphique ── */
+.prevision-chart-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.prevision-chart-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 1rem;
+}
+
+.prevision-chart-header h3 svg {
+  width: 20px;
+  height: 20px;
+  stroke: #C8102E;
+}
+
+.prevision-chart-body {
+  height: 350px;
+}
+
+/* ── Tableau ── */
+.prevision-table-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.prevision-table-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 1rem;
+}
+
+.prevision-table-wrapper {
+  overflow-x: auto;
+}
+
+.prevision-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.prevision-table thead {
+  background: #F8FAFC;
+}
+
+.prevision-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.prevision-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #F1F5F9;
+  color: #334155;
+}
+
+.prevision-table tbody tr:hover {
+  background: #F8FAFC;
+}
+
+/* ── Loading ── */
+.prevision-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: 1rem;
+  color: #64748B;
+}
+
+.prevision-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #E2E8F0;
+  border-top-color: #C8102E;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Empty state ── */
+.prevision-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  padding: 3rem;
+  text-align: center;
+}
+
+.prevision-empty svg {
+  width: 64px;
+  height: 64px;
+  stroke: #94A3B8;
+}
+
+.prevision-empty h3 {
+  margin-top: 1rem;
+  font-size: 18px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.prevision-empty p {
+  color: #94A3B8;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.prevision-empty .btn-train {
+  margin-top: 1.5rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .prevision-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .prevision-page {
+    padding: 1rem;
+  }
+
+  .prevision-header h1 {
+    font-size: 20px;
+  }
+
+  .prevision-header p {
+    margin-left: 0;
+  }
+
+  .prevision-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .prevision-steps {
+    margin-left: 0;
+  }
+
+  .prevision-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prevision-chart-body {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .prevision-stat-card .prevision-stat-value {
+    font-size: 16px;
+  }
+}

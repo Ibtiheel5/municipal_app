@@ -1,0 +1,70 @@
+/* ─────────────────────────────────────────────────────────────────────
+   Ajouts à ajouter à la fin de TIBPage.css (ne remplace pas l'existant)
+   ───────────────────────────────────────────────────────────────────── */
+
+.formule-hint {
+  margin: .75rem 0;
+  padding: .6rem .9rem;
+  background: #F3F4F6;
+  border-left: 3px solid #DC2626; /* rouge tunisien */
+  border-radius: 6px;
+  font-size: .85rem;
+  color: #374151;
+  font-style: italic;
+}
+
+.montant-total {
+  background: linear-gradient(135deg, #0F2A5C, #1E3A8A);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.btn-secondary {
+  background: #E5E7EB;
+  color: #374151;
+  border: none;
+  border-radius: 8px;
+  padding: .55rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.btn-secondary:hover { background: #D1D5DB; }
+
+.no-data {
+  text-align: center;
+  padding: 1.5rem;
+  color: #9CA3AF;
+  font-style: italic;
+}
+
+/* Pagination simple pour les tableaux d'historique, si ajoutée côté JS */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+.pagination button {
+  border: 1px solid #E5E7EB;
+  background: #fff;
+  border-radius: 6px;
+  padding: .35rem .75rem;
+  cursor: pointer;
+}
+.pagination button.active {
+  background: #DC2626;
+  color: #fff;
+  border-color: #DC2626;
+}
+.pagination button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .calcul-grid { grid-template-columns: 1fr; }
+  .search-grid { grid-template-columns: 1fr; }
+}

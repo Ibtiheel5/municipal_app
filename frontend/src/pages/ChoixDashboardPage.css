@@ -1,0 +1,214 @@
+/* ChoixDashboardPage.css */
+
+.choix-page {
+  min-height: 100vh;
+  background: #F8FAFC;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.choix-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 72px;
+  background: #FFFFFF;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.choix-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.choix-logo svg {
+  width: 36px;
+  height: 36px;
+}
+
+.choix-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.choix-logo-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.choix-logo-sub {
+  font-size: 11px;
+  color: #64748B;
+}
+
+.choix-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.choix-topbar-right > svg {
+  width: 28px;
+  height: 19px;
+}
+
+.choix-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 200ms ease;
+  font-family: inherit;
+}
+
+.choix-logout-btn:hover {
+  background: #FEF2F2;
+  border-color: #C8102E;
+  color: #C8102E;
+}
+
+.choix-logout-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.choix-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.choix-content h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 8px;
+}
+
+.choix-content > p {
+  font-size: 15px;
+  color: #64748B;
+  margin: 0 0 3rem;
+}
+
+.choix-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.choix-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: 220ms ease;
+  font-family: inherit;
+}
+
+.choix-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.10);
+}
+
+.choix-card-municipalite:hover {
+  border-color: #C8102E;
+}
+
+.choix-card-recettes:hover {
+  border-color: #0A1E3D;
+}
+
+.choix-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.choix-card-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.choix-card-municipalite .choix-card-icon {
+  background: #FEE2E8;
+  color: #C8102E;
+}
+
+.choix-card-recettes .choix-card-icon {
+  background: #DBEAFE;
+  color: #0A1E3D;
+}
+
+.choix-card h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 8px;
+}
+
+.choix-card p {
+  font-size: 13px;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+  flex: 1;
+}
+
+.choix-card-cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.choix-card-municipalite .choix-card-cta {
+  color: #C8102E;
+}
+
+.choix-card-recettes .choix-card-cta {
+  color: #0A1E3D;
+}
+
+.choix-card-cta svg {
+  width: 15px;
+  height: 15px;
+  transition: 200ms ease;
+}
+
+.choix-card:hover .choix-card-cta svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 700px) {
+  .choix-cards {
+    grid-template-columns: 1fr;
+  }
+  .choix-content {
+    padding: 2.5rem 1.5rem;
+  }
+  .choix-logout-btn span {
+    display: none;
+  }
+}

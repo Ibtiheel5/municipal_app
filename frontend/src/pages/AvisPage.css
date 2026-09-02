@@ -1,0 +1,304 @@
+/* AvisPage.css */
+.avis-page {
+  padding: 1.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.avis-header {
+  margin-bottom: 2rem;
+}
+.avis-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0F172A;
+}
+.avis-header h1 svg {
+  width: 26px;
+  height: 26px;
+  stroke: #C8102E;
+}
+.avis-header p {
+  color: #64748B;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-left: 36px;
+}
+
+/* ── Filtres ── */
+.avis-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  background: white;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  margin-bottom: 1.5rem;
+}
+.avis-filters .filter-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.avis-filters .filter-group svg {
+  width: 18px;
+  height: 18px;
+  stroke: #64748B;
+}
+.avis-filters select,
+.avis-filters input {
+  padding: 6px 12px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  background: white;
+  font-family: inherit;
+}
+.avis-filters select:focus,
+.avis-filters input:focus {
+  border-color: #C8102E;
+  box-shadow: 0 0 0 3px rgba(200,16,46,0.1);
+}
+.avis-filters .search {
+  flex: 1;
+  min-width: 150px;
+}
+.avis-filters .btn-primary {
+  background: #C8102E;
+  color: white;
+  border: none;
+  padding: 6px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.avis-filters .btn-primary:hover { background: #A50D25; }
+
+/* ── Statistiques ── */
+.avis-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  margin-bottom: 1.5rem;
+}
+.avis-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  border-right: 1px solid #E2E8F0;
+}
+.avis-stat-card:last-child { border-right: none; }
+.avis-stat-card .stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0F172A;
+}
+.avis-stat-card .stat-label {
+  font-size: 12px;
+  color: #64748B;
+}
+.avis-chart-container {
+  width: 120px;
+  height: 120px;
+  margin-left: auto;
+}
+@media (max-width: 768px) {
+  .avis-stats-row { flex-direction: column; align-items: stretch; }
+  .avis-stat-card { border-right: none; border-bottom: 1px solid #E2E8F0; padding: 0.5rem 0; }
+  .avis-chart-container { margin-left: 0; align-self: center; }
+}
+
+/* ── Tableau ── */
+.avis-table-wrapper {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.avis-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.avis-table thead { background: #F8FAFC; }
+.avis-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  border-bottom: 1px solid #E2E8F0;
+}
+.avis-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #F1F5F9;
+}
+.avis-table tbody tr:hover { background: #F8FAFC; }
+.avis-table .no-data {
+  text-align: center;
+  padding: 2rem;
+  color: #94A3B8;
+}
+.type-badge {
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.type-tib { background: #FEE2E8; color: #C8102E; }
+.type-tnb { background: #DBEAFE; color: #1D4ED8; }
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.status-warning { background: #FEF3C7; color: #92400E; }
+.status-success { background: #DCFCE7; color: #166534; }
+.status-danger { background: #FEE2E2; color: #991B1B; }
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #F1F5F9;
+  color: #475569;
+  transition: background 0.2s;
+}
+.btn-icon:hover { background: #E2E8F0; }
+.btn-icon.success { background: #DCFCE7; color: #166534; }
+.btn-icon.success:hover { background: #BBF7D0; }
+
+/* ── Pagination ── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0.75rem 0;
+}
+.pagination button {
+  padding: 6px 14px;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  background: white;
+  color: #334155;
+  font-size: 13px;
+  cursor: pointer;
+}
+.pagination button:hover:not(:disabled) { background: #F1F5F9; }
+.pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── Loading ── */
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #64748B;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #E2E8F0;
+  position: sticky;
+  top: 0;
+  background: white;
+}
+.modal-header h2 { font-size: 17px; font-weight: 700; margin: 0; }
+.modal-close { background: none; border: none; cursor: pointer; }
+.modal-close svg { width: 24px; height: 24px; stroke: #64748B; }
+.modal-body { padding: 1.5rem; }
+.modal-body pre {
+  background: #F8FAFC;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+}
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #E2E8F0;
+}
+.btn-secondary {
+  background: #E2E8F0;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-pdf {
+  background: #C8102E;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-pdf:hover { background: #A50D25; }
+.btn-pdf svg { width: 16px; height: 16px; stroke: currentColor; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .avis-page { padding: 1rem; }
+  .avis-filters { flex-direction: column; align-items: stretch; }
+  .avis-filters .filter-group { width: 100%; }
+  .avis-filters .search { flex: 1; }
+  .avis-table-wrapper { overflow-x: auto; }
+  .avis-table { font-size: 12px; }
+}

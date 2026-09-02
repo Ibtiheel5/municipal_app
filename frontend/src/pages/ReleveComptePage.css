@@ -1,0 +1,669 @@
+/* ReleveComptePage.css */
+.releve-page {
+  padding: 1.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.releve-header {
+  margin-bottom: 2rem;
+}
+
+.releve-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.releve-header h1 svg {
+  width: 26px;
+  height: 26px;
+  stroke: #C8102E;
+}
+
+.releve-header p {
+  color: #64748B;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-left: 36px;
+}
+
+.releve-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.releve-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #E2E8F0;
+  background: #F8FAFC;
+}
+
+.releve-card-header h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+  margin: 0;
+}
+
+.releve-card-body {
+  padding: 1.5rem;
+}
+
+/* ── Recherche ────────────────────────────────────────────────────────── */
+.releve-search-row {
+  display: flex;
+  gap: 10px;
+}
+
+.releve-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  color: #1E293B;
+}
+
+.releve-input:focus {
+  border-color: #C8102E;
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+}
+
+.btn-releve-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #0A1E3D;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-releve-search:hover:not(:disabled) {
+  background: #1A365D;
+}
+
+.btn-releve-search:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-releve-search svg {
+  width: 16px;
+  height: 16px;
+}
+
+.releve-error {
+  margin-top: 10px;
+  color: #991B1B;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.releve-hint {
+  font-size: 12px;
+  color: #94A3B8;
+  margin: 6px 0 0;
+}
+
+/* ── En-tête dossier ──────────────────────────────────────────────────── */
+.releve-dossier-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.releve-dossier-grid label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 3px;
+}
+
+.releve-dossier-grid span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1E293B;
+}
+
+.type-badge {
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.type-badge-tib {
+  background: #FEE2E8;
+  color: #C8102E;
+}
+
+.type-badge-tnb {
+  background: #DBEAFE;
+  color: #1D4ED8;
+}
+
+/* ── Tableau ──────────────────────────────────────────────────────────── */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.releve-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.releve-table thead {
+  background: #F8FAFC;
+}
+
+.releve-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.releve-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #F1F5F9;
+  color: #334155;
+}
+
+.releve-table tbody tr:hover {
+  background: #F8FAFC;
+}
+
+.releve-table tbody tr.row-danger {
+  background: #FEE2E2;
+}
+
+.releve-totaux-row td {
+  font-weight: 700;
+  color: #0F172A;
+  background: #F8FAFC;
+  border-top: 2px solid #E2E8F0;
+  border-bottom: none;
+}
+
+/* ── Badges statut ────────────────────────────────────────────────────── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-badge.status-warning {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.status-badge.status-success {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.status-badge.status-danger {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+.status-badge.status-partiel {
+  background: #FFEDD5;
+  color: #C2410C;
+}
+
+/* ── Boutons d'action de ligne ────────────────────────────────────────── */
+.btn-releve-link {
+  background: none;
+  border: none;
+  color: #0A1E3D;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.btn-releve-link:hover {
+  text-decoration: underline;
+}
+
+.btn-releve-payer {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: #DCFCE7;
+  color: #166534;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-releve-payer:hover {
+  background: #BBF7D0;
+}
+
+/* ── Modals ───────────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.modal-hidden {
+  display: none !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-visible {
+  display: flex !important;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.10);
+}
+
+.modal-content.modal-small {
+  max-width: 460px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #E2E8F0;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+.modal-header h2 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-header h2 svg {
+  width: 20px;
+  height: 20px;
+  stroke: #C8102E;
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #F1F5F9;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: #E2E8F0;
+}
+
+.modal-close svg {
+  width: 18px;
+  height: 18px;
+  stroke: #64748B;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #E2E8F0;
+  flex-wrap: wrap;
+}
+
+.modal-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  margin: 1rem 0 6px;
+}
+
+.modal-intro-text {
+  font-size: 14px;
+  color: #334155;
+  margin: 0;
+}
+
+.btn-releve-secondary {
+  background: #E2E8F0;
+  color: #334155;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-releve-secondary:hover {
+  background: #CBD5E1;
+}
+
+.btn-releve-confirm {
+  background: #C8102E;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-releve-confirm:hover:not(:disabled) {
+  background: #A50D25;
+}
+
+.btn-releve-confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-releve-print,
+.btn-releve-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-releve-print {
+  background: #F1F5F9;
+  color: #334155;
+}
+
+.btn-releve-print:hover {
+  background: #E2E8F0;
+}
+
+.btn-releve-pdf {
+  background: #C8102E;
+  color: white;
+}
+
+.btn-releve-pdf:hover {
+  background: #A50D25;
+}
+
+.btn-releve-print svg,
+.btn-releve-pdf svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ── Mode de paiement ─────────────────────────────────────────────────── */
+.mode-paiement-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mode-paiement-btn {
+  padding: 12px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  background: white;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.mode-paiement-btn-active {
+  border-color: #C8102E;
+  background: #FEE2E8;
+  color: #C8102E;
+  font-weight: 700;
+}
+
+/* ── Quittance imprimable ─────────────────────────────────────────────── */
+.quittance-print-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.quittance-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.quittance-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.quittance-numero {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.quittance-sub {
+  display: block;
+  font-size: 12px;
+  color: #64748B;
+  margin-top: 2px;
+}
+
+.quittance-montant-badge {
+  background: #DCFCE7;
+  color: #166534;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 10px;
+}
+
+.quittance-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.quittance-info-item label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;
+}
+
+.quittance-info-item span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1E293B;
+}
+
+.quittance-cachet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  border: 1.5px dashed #CBD5E1;
+  border-radius: 10px;
+  color: #94A3B8;
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* ── Impression ────────────────────────────────────────────────────────── */
+@media print {
+  /* Masquer les boutons d'action et la fermeture du modal */
+  .modal-footer,
+  .modal-close,
+  .btn-releve-secondary,
+  .btn-releve-print,
+  .btn-releve-pdf {
+    display: none !important;
+  }
+
+  /* Le modal devient une page pleine */
+  .modal-overlay {
+    position: static !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+  }
+
+  .modal-content {
+    max-height: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  .modal-header {
+    border-bottom: 2px solid #0F172A !important;
+  }
+
+  .quittance-print-area {
+    padding: 0 !important;
+  }
+
+  .quittance-info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Cacher l'en-tête du site et les cartes superflues */
+  .releve-header,
+  .releve-card:not(:has(.quittance-print-area)) {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+  }
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .releve-dossier-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .releve-page {
+    padding: 1rem;
+  }
+
+  .releve-search-row {
+    flex-direction: column;
+  }
+
+  .releve-dossier-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quittance-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-paiement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .modal-footer button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .releve-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .btn-releve-pdf {
+    width: 100%;
+    justify-content: center;
+  }
+}

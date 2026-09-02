@@ -1,0 +1,533 @@
+/* src/pages/RisquePage.css */
+.risque-page {
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.risque-header {
+  margin-bottom: 2rem;
+}
+
+.risque-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.risque-header h1 svg {
+  width: 28px;
+  height: 28px;
+  stroke: #C8102E;
+}
+
+.risque-header p {
+  color: #64748B;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-left: 40px;
+}
+
+/* ── Carte de recherche ── */
+.risque-search-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.risque-search-body {
+  padding: 1.5rem;
+}
+
+.risque-search-grid {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+.risque-search-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.risque-search-item label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+}
+
+.risque-search-item label svg {
+  width: 16px;
+  height: 16px;
+  stroke: #64748B;
+}
+
+.risque-input {
+  padding: 10px 14px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  width: 100%;
+  background: #FFFFFF;
+  color: #1E293B;
+}
+
+.risque-input:focus {
+  border-color: #C8102E;
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+}
+
+.risque-input::placeholder {
+  color: #94A3B8;
+}
+
+.risque-search-actions {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+/* ── Boutons ── */
+.btn-evaluer {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: #C8102E;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  font-family: inherit;
+  height: 42px;
+  white-space: nowrap;
+}
+
+.btn-evaluer:hover:not(:disabled) {
+  background: #A50D25;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+}
+
+.btn-evaluer:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-evaluer svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+.btn-retrain {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #F1F5F9;
+  color: #475569;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  font-family: inherit;
+  height: 42px;
+  white-space: nowrap;
+}
+
+.btn-retrain:hover:not(:disabled) {
+  background: #E2E8F0;
+  border-color: #CBD5E1;
+}
+
+.btn-retrain:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-retrain svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+/* ── Formule hint ── */
+.risque-hint {
+  margin: 0.75rem 0 0;
+  padding: 0.6rem 0.9rem;
+  background: #F8FAFC;
+  border-left: 3px solid #C8102E;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #64748B;
+  font-style: italic;
+}
+
+.risque-hint svg {
+  width: 16px;
+  height: 16px;
+  stroke: #C8102E;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* ── Carte de résultat ── */
+.risque-result-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  overflow: hidden;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.risque-result-body {
+  padding: 1.5rem;
+}
+
+/* ── En-tête du résultat ── */
+.risque-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #E2E8F0;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.risque-proprietaire {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.risque-proprietaire label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.risque-proprietaire-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.risque-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.risque-badge svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+/* ── Grille d'infos ── */
+.risque-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.risque-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.risque-info-item label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.risque-info-item span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1E293B;
+}
+
+.risque-info-item .large {
+  font-size: 20px;
+}
+
+/* ── Probabilités ── */
+.risque-probabilities {
+  margin-top: 1.25rem;
+}
+
+.risque-probabilities-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.75rem;
+}
+
+.risque-probabilities-title svg {
+  width: 18px;
+  height: 18px;
+  stroke: #C8102E;
+}
+
+.risque-prob-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.risque-prob-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1.5px solid #E2E8F0;
+  background: #FFFFFF;
+  transition: all 0.2s ease;
+}
+
+.risque-prob-item.highlight {
+  border-color: currentColor;
+  background: rgba(200, 16, 46, 0.05);
+}
+
+.risque-prob-item .label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.risque-prob-item .label svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+}
+
+.risque-prob-item .value {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ── Features ── */
+.risque-features {
+  margin-top: 1.25rem;
+}
+
+.risque-features-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.75rem;
+}
+
+.risque-features-title svg {
+  width: 18px;
+  height: 18px;
+  stroke: #C8102E;
+}
+
+.risque-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.risque-feature-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: #FFFFFF;
+  border-radius: 6px;
+  border: 1px solid #E2E8F0;
+  font-size: 12px;
+}
+
+.risque-feature-item .key {
+  color: #64748B;
+}
+
+.risque-feature-item .value {
+  font-weight: 600;
+  color: #0F172A;
+}
+
+/* ── État vide ── */
+.risque-empty {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  padding: 3rem;
+  text-align: center;
+}
+
+.risque-empty svg {
+  width: 64px;
+  height: 64px;
+  stroke: #94A3B8;
+}
+
+.risque-empty h3 {
+  margin-top: 1rem;
+  font-size: 18px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.risque-empty p {
+  color: #94A3B8;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.risque-empty .hint {
+  margin-top: 1rem;
+  font-size: 12px;
+  color: #94A3B8;
+}
+
+/* ── Loading ── */
+.risque-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 1rem;
+  color: #64748B;
+}
+
+.risque-loading .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #E2E8F0;
+  border-top-color: #C8102E;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .risque-info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .risque-prob-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .risque-features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .risque-page {
+    padding: 1rem;
+  }
+
+  .risque-header h1 {
+    font-size: 20px;
+  }
+
+  .risque-header p {
+    margin-left: 0;
+  }
+
+  .risque-search-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .risque-search-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .risque-search-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .risque-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .risque-prob-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .risque-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .risque-result-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .risque-prob-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .risque-badge {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+
+  .risque-prob-item .value {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,272 @@
+/* DashboardRecettesHome.css - Styles pour le tableau de bord des recettes */
+
+.dashboard-recettes-home {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ── Cartes statistiques ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #F1F5F9;
+  color: #C8102E;
+  margin-bottom: 0.75rem;
+}
+
+.stat-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+}
+
+.stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #64748B;
+  margin-top: 4px;
+}
+
+/* ── Grille des graphiques ── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.chart-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chart-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.chart-header svg {
+  width: 20px;
+  height: 20px;
+  stroke: #C8102E;
+}
+
+.chart-header h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E293B;
+  margin: 0;
+}
+
+.chart-card canvas {
+  max-height: 250px;
+  max-width: 100%;
+}
+
+/* ── Loading ── */
+.recettes-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: 1rem;
+  color: #64748B;
+}
+
+.recettes-spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid #E2E8F0;
+  border-top-color: #C8102E;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+  .chart-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-recettes-home {
+    gap: 1.5rem;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .stat-card {
+    padding: 1rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  .stat-icon {
+    margin-bottom: 0;
+    width: 40px;
+    height: 40px;
+  }
+  .stat-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  .stat-value {
+    font-size: 20px;
+  }
+  .chart-card {
+    padding: 0.75rem;
+  }
+  .chart-header h4 {
+    font-size: 13px;
+  }
+}
+/* DashboardRecettesHome.css – Ajouts pour les filtres et améliorations */
+
+/* ── Barre de filtres ── */
+.filters-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 13px;
+  color: #334155;
+}
+
+.filter-item svg {
+  width: 18px;
+  height: 18px;
+  stroke: #64748B;
+}
+
+.filter-item select {
+  padding: 6px 12px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 6px;
+  background: white;
+  font-size: 13px;
+  color: #1E293B;
+  outline: none;
+  cursor: pointer;
+}
+
+.filter-item select:focus {
+  border-color: #C8102E;
+  box-shadow: 0 0 0 3px rgba(200,16,46,0.1);
+}
+
+.btn-refresh {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: #0A1E3D;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-refresh:hover {
+  background: #1A365D;
+}
+
+.btn-refresh svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+/* ── Ajustement pour 6 cartes ── */
+@media (min-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1024px) and (min-width: 600px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

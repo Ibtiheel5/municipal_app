@@ -1,0 +1,114 @@
+/* DashboardRecettes.css — complète DashboardUser.css, ne redéfinit aucune variable */
+
+/* ── Placeholder "bientôt disponible" pour les onglets non construits ────── */
+.recettes-coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--gray-500);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--gray-300);
+}
+
+.recettes-coming-soon-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  color: var(--primary-red);
+}
+
+.recettes-coming-soon-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke: var(--primary-red);
+}
+
+.recettes-coming-soon h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin: 0 0 8px;
+}
+
+.recettes-coming-soon p {
+  font-size: 14px;
+  color: var(--gray-500);
+  max-width: 420px;
+  margin: 0;
+}
+/* Styles pour les pages Avis, Paiements, Historique, Rapports, Paramètres */
+.type-badge {
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.type-tib { background: #fee2e8; color: #c8102e; }
+.type-tnb { background: #dbeafe; color: #1d4ed8; }
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #f1f5f9;
+  color: #475569;
+  transition: background 0.2s;
+}
+.btn-icon:hover { background: #e2e8f0; }
+.btn-icon.success { background: #dcfce7; color: #166534; }
+.btn-icon.success:hover { background: #bbf7d0; }
+
+.filtres-grid {
+  display: grid;
+  gap: 1rem;
+  align-items: end;
+}
+.filtre-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.filtre-item label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+}
+.filtre-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.avis-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.avis-table thead { background: #f8fafc; }
+.avis-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e8f0;
+}
+.avis-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.no-data {
+  text-align: center;
+  padding: 2rem;
+  color: #94a3b8;
+}
