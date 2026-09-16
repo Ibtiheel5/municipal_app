@@ -17,23 +17,13 @@ public class AuthController {
 
     private final AuthService authService;
 
-    /**
-     * POST /api/auth/register
-     * Inscription d'un nouvel utilisateur
-     */
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
-        AuthResponse response = authService.register(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(request));
     }
 
-    /**
-     * POST /api/auth/login
-     * Connexion d'un utilisateur existant
-     */
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
-        AuthResponse response = authService.login(request);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(authService.login(request));
     }
 }

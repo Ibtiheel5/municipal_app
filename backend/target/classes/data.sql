@@ -1,11 +1,20 @@
 -- ============================================================
--- data.sql - Version corrigée avec tous les champs obligatoires
+-- data.sql - Version complète corrigée
+-- Tables TIB alignées avec les entités Java fournies :
+-- categorie_tib / valeur_venale / parametre_tib
 -- ============================================================
 
 -- ============================================================
 -- 1. MISE À JOUR STRUCTURE
 -- ============================================================
 ALTER TABLE users ADD COLUMN IF NOT EXISTS statut VARCHAR(20) DEFAULT 'EN_ATTENTE';
+ALTER TABLE rues ALTER COLUMN eclairage_public SET DEFAULT false;
+ALTER TABLE rues ALTER COLUMN assainissement SET DEFAULT false;
+ALTER TABLE rues ALTER COLUMN eau_potable SET DEFAULT false;
+ALTER TABLE rues ALTER COLUMN electricite SET DEFAULT false;
+ALTER TABLE rues ALTER COLUMN voirie SET DEFAULT false;
+ALTER TABLE rues ALTER COLUMN proprete SET DEFAULT false;
+ALTER TABLE rues ALTER COLUMN autre_critere SET DEFAULT false;
 ALTER TABLE users ADD COLUMN IF NOT EXISTS municipalite_id BIGINT;
 
 -- ============================================================
@@ -15,7 +24,7 @@ INSERT INTO users (id, nom, email, password, role, statut)
 VALUES (1, 'Administrateur', 'admin@municipal.tn',
         '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lHuu',
         'ADMIN', 'ACTIF')
-ON CONFLICT (id) DO NOTHING;
+ON CONFLICT (email) DO NOTHING;
 
 -- ============================================================
 -- 3. MUNICIPALITÉS (avec IDs explicites)
@@ -47,54 +56,79 @@ ON CONFLICT (id) DO NOTHING;
 -- ============================================================
 -- 5. RUES - MÉDINA (secteur_id = 1)
 -- ============================================================
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(1, 'Rue de la Kasbah', 1, 180.00, 0.08, 0.02, 'BONNE', 3, 1),
-(2, 'Rue Sidi Ben Arous', 1, 170.00, 0.08, 0.02, 'BONNE', 4, 1),
-(3, 'Rue Jemaa Zitouna', 1, 190.00, 0.10, 0.02, 'BONNE', 5, 1),
-(4, 'Souk El Attarine', 1, 200.00, 0.10, 0.02, 'MOYENNE', 4, 2),
-(5, 'Rue de la Commission', 1, 160.00, 0.08, 0.02, 'BONNE', 3, 1)
+(1, 'Rue de la Kasbah', 1, 180.00, 0.08, 0.02, 'BONNE', true, true, false, true, false, false, false, NULL, NULL, 3, 1),
+(2, 'Rue Sidi Ben Arous', 1, 170.00, 0.08, 0.02, 'BONNE', true, true, true, true, false, false, false, NULL, NULL, 4, 1),
+(3, 'Rue Jemaa Zitouna', 1, 190.00, 0.10, 0.02, 'BONNE', true, true, true, true, true, false, false, NULL, NULL, 5, 1),
+(4, 'Souk El Attarine', 1, 200.00, 0.10, 0.02, 'MOYENNE', true, true, true, true, false, false, false, NULL, NULL, 4, 2),
+(5, 'Rue de la Commission', 1, 160.00, 0.08, 0.02, 'BONNE', true, true, false, true, false, false, false, NULL, NULL, 3, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================
 -- 6. RUES - LAFAYETTE (secteur_id = 2)
 -- ============================================================
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(6, 'Avenue de Paris', 2, 210.00, 0.10, 0.02, 'BONNE', 5, 1),
-(7, 'Rue de Marseille', 2, 190.00, 0.08, 0.02, 'BONNE', 4, 1),
-(8, 'Avenue de Carthage', 2, 200.00, 0.10, 0.02, 'MOYENNE', 3, 2),
-(9, 'Rue Charles de Gaulle', 2, 185.00, 0.08, 0.02, 'BONNE', 4, 1)
+(6, 'Avenue de Paris', 2, 210.00, 0.10, 0.02, 'BONNE', true, true, true, true, true, false, false, NULL, NULL, 5, 1),
+(7, 'Rue de Marseille', 2, 190.00, 0.08, 0.02, 'BONNE', true, true, true, true, false, false, false, NULL, NULL, 4, 1),
+(8, 'Avenue de Carthage', 2, 200.00, 0.10, 0.02, 'MOYENNE', true, true, false, true, false, false, false, NULL, NULL, 3, 2),
+(9, 'Rue Charles de Gaulle', 2, 185.00, 0.08, 0.02, 'BONNE', true, true, true, true, false, false, false, NULL, NULL, 4, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================
 -- 7. RUES - BAB EL BHAR (secteur_id = 3)
 -- ============================================================
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(10, 'Avenue Habib Bourguiba', 3, 250.00, 0.12, 0.02, 'BONNE', 6, 1),
-(11, 'Rue d''Espagne', 3, 220.00, 0.10, 0.02, 'BONNE', 5, 1),
-(12, 'Rue d''Angleterre', 3, 210.00, 0.10, 0.02, 'MOYENNE', 4, 2),
-(13, 'Rue de Rome', 3, 200.00, 0.08, 0.02, 'BONNE', 3, 1)
+(10, 'Avenue Habib Bourguiba', 3, 250.00, 0.12, 0.02, 'BONNE', true, true, true, true, true, true, false, NULL, NULL, 6, 1),
+(11, 'Rue d''Espagne', 3, 220.00, 0.10, 0.02, 'BONNE', true, true, true, true, true, false, false, NULL, NULL, 5, 1),
+(12, 'Rue d''Angleterre', 3, 210.00, 0.10, 0.02, 'MOYENNE', true, true, true, true, false, false, false, NULL, NULL, 4, 2),
+(13, 'Rue de Rome', 3, 200.00, 0.08, 0.02, 'BONNE', true, true, false, true, false, false, false, NULL, NULL, 3, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================
 -- 8. RUES - EL MENZAH (secteur_id = 4)
 -- ============================================================
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(14, 'Avenue Mohamed V', 4, 230.00, 0.10, 0.02, 'BONNE', 5, 1),
-(15, 'Rue El Menzah 1', 4, 200.00, 0.08, 0.02, 'BONNE', 4, 1),
-(16, 'Rue El Menzah 6', 4, 195.00, 0.08, 0.02, 'BONNE', 3, 1)
+(14, 'Avenue Mohamed V', 4, 230.00, 0.10, 0.02, 'BONNE', true, true, true, true, true, false, false, NULL, NULL, 5, 1),
+(15, 'Rue El Menzah 1', 4, 200.00, 0.08, 0.02, 'BONNE', true, true, true, true, false, false, false, NULL, NULL, 4, 1),
+(16, 'Rue El Menzah 6', 4, 195.00, 0.08, 0.02, 'BONNE', true, true, false, true, false, false, false, NULL, NULL, 3, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================
 -- 9. RUES - BELVEDÈRE (secteur_id = 5)
 -- ============================================================
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(17, 'Avenue du Belvédère', 5, 220.00, 0.10, 0.02, 'BONNE', 4, 1),
-(18, 'Rue du Parc', 5, 190.00, 0.08, 0.02, 'BONNE', 3, 1)
+(17, 'Avenue du Belvédère', 5, 220.00, 0.10, 0.02, 'BONNE', true, true, true, true, false, false, false, NULL, NULL, 4, 1),
+(18, 'Rue du Parc', 5, 190.00, 0.08, 0.02, 'BONNE', true, true, false, true, false, false, false, NULL, NULL, 3, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================
@@ -107,25 +141,40 @@ INSERT INTO secteurs (id, nom, municipalite_id) VALUES
 ON CONFLICT (id) DO NOTHING;
 
 -- 10.1 RUES - LA MARSA PLAGE (secteur_id = 6)
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(19, 'Avenue Taieb Mhiri', 6, 280.00, 0.12, 0.02, 'BONNE', 6, 1),
-(20, 'Rue de la Plage', 6, 260.00, 0.10, 0.02, 'BONNE', 5, 1)
+(19, 'Avenue Taieb Mhiri', 6, 280.00, 0.12, 0.02, 'BONNE', true, true, true, true, true, true, false, NULL, NULL, 6, 1),
+(20, 'Rue de la Plage', 6, 260.00, 0.10, 0.02, 'BONNE', true, true, true, true, true, false, false, NULL, NULL, 5, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- 10.2 RUES - LA MARSA CENTRE (secteur_id = 7)
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(21, 'Avenue du Président Bourguiba', 7, 270.00, 0.12, 0.02, 'BONNE', 6, 1),
-(22, 'Rue du Commerce', 7, 250.00, 0.10, 0.02, 'BONNE', 5, 1),
-(23, 'Rue Ali Belhouane', 7, 240.00, 0.10, 0.02, 'MOYENNE', 4, 2)
+(21, 'Avenue du Président Bourguiba', 7, 270.00, 0.12, 0.02, 'BONNE', true, true, true, true, true, true, false, NULL, NULL, 6, 1),
+(22, 'Rue du Commerce', 7, 250.00, 0.10, 0.02, 'BONNE', true, true, true, true, true, false, false, NULL, NULL, 5, 1),
+(23, 'Rue Ali Belhouane', 7, 240.00, 0.10, 0.02, 'MOYENNE', true, true, true, true, false, false, false, NULL, NULL, 4, 2)
 ON CONFLICT (id) DO NOTHING;
 
 -- 10.3 RUES - AÏN ZAGHOUAN (secteur_id = 8)
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(24, 'Avenue Aïn Zaghouan Nord', 8, 230.00, 0.10, 0.02, 'BONNE', 4, 1),
-(25, 'Rue des Jasmins', 8, 210.00, 0.08, 0.02, 'BONNE', 3, 1)
+(24, 'Avenue Aïn Zaghouan Nord', 8, 230.00, 0.10, 0.02, 'BONNE', true, true, true, true, false, false, false, NULL, NULL, 4, 1),
+(25, 'Rue des Jasmins', 8, 210.00, 0.08, 0.02, 'BONNE', true, true, false, true, false, false, false, NULL, NULL, 3, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================
@@ -138,23 +187,38 @@ INSERT INTO secteurs (id, nom, municipalite_id) VALUES
 ON CONFLICT (id) DO NOTHING;
 
 -- 11.1 RUES - CARTHAGE HANNIBAL (secteur_id = 9)
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(26, 'Avenue de la République', 9, 350.00, 0.14, 0.02, 'BONNE', 7, 1),
-(27, 'Rue Hannibal', 9, 320.00, 0.12, 0.02, 'BONNE', 6, 1)
+(26, 'Avenue de la République', 9, 350.00, 0.14, 0.02, 'BONNE', true, true, true, true, true, true, true, NULL, NULL, 7, 1),
+(27, 'Rue Hannibal', 9, 320.00, 0.12, 0.02, 'BONNE', true, true, true, true, true, true, false, NULL, NULL, 6, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- 11.2 RUES - CARTHAGE DERMECH (secteur_id = 10)
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(28, 'Avenue des Thermes', 10, 310.00, 0.12, 0.02, 'BONNE', 5, 1),
-(29, 'Rue Hamilcar', 10, 290.00, 0.10, 0.02, 'BONNE', 5, 1)
+(28, 'Avenue des Thermes', 10, 310.00, 0.12, 0.02, 'BONNE', true, true, true, true, true, false, false, NULL, NULL, 5, 1),
+(29, 'Rue Hamilcar', 10, 290.00, 0.10, 0.02, 'BONNE', true, true, true, true, true, false, false, NULL, NULL, 5, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- 11.3 RUES - CARTHAGE BYRSA (secteur_id = 11)
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(30, 'Rue de Byrsa', 11, 330.00, 0.12, 0.02, 'BONNE', 6, 1)
+(30, 'Rue de Byrsa', 11, 330.00, 0.12, 0.02, 'BONNE', true, true, true, true, true, true, false, NULL, NULL, 6, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================
@@ -166,18 +230,28 @@ INSERT INTO secteurs (id, nom, municipalite_id) VALUES
 ON CONFLICT (id) DO NOTHING;
 
 -- 12.1 RUES - BARDO CENTRE (secteur_id = 12)
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(31, 'Avenue du Bardo', 12, 200.00, 0.10, 0.02, 'BONNE', 5, 1),
-(32, 'Rue du Musée', 12, 190.00, 0.08, 0.02, 'BONNE', 4, 1),
-(33, 'Rue Ibn Khaldoun', 12, 185.00, 0.08, 0.02, 'MOYENNE', 3, 2)
+(31, 'Avenue du Bardo', 12, 200.00, 0.10, 0.02, 'BONNE', true, true, true, true, true, false, false, NULL, NULL, 5, 1),
+(32, 'Rue du Musée', 12, 190.00, 0.08, 0.02, 'BONNE', true, true, true, true, false, false, false, NULL, NULL, 4, 1),
+(33, 'Rue Ibn Khaldoun', 12, 185.00, 0.08, 0.02, 'MOYENNE', true, true, false, true, false, false, false, NULL, NULL, 3, 2)
 ON CONFLICT (id) DO NOTHING;
 
 -- 12.2 RUES - BARDO NORD (secteur_id = 13)
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(34, 'Avenue Mongi Slim', 13, 195.00, 0.08, 0.02, 'BONNE', 4, 1),
-(35, 'Rue de Tunis', 13, 180.00, 0.08, 0.02, 'BONNE', 3, 1)
+(34, 'Avenue Mongi Slim', 13, 195.00, 0.08, 0.02, 'BONNE', true, true, true, true, false, false, false, NULL, NULL, 4, 1),
+(35, 'Rue de Tunis', 13, 180.00, 0.08, 0.02, 'BONNE', true, true, false, true, false, false, false, NULL, NULL, 3, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================
@@ -189,24 +263,34 @@ INSERT INTO secteurs (id, nom, municipalite_id) VALUES
 ON CONFLICT (id) DO NOTHING;
 
 -- 13.1 RUES - LA GOULETTE VIEILLE (secteur_id = 14)
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(36, 'Avenue Franklin Roosevelt', 14, 240.00, 0.10, 0.02, 'BONNE', 5, 1),
-(37, 'Rue de la Jetée', 14, 230.00, 0.10, 0.02, 'MOYENNE', 4, 2),
-(38, 'Rue du Port', 14, 220.00, 0.08, 0.02, 'BONNE', 4, 1)
+(36, 'Avenue Franklin Roosevelt', 14, 240.00, 0.10, 0.02, 'BONNE', true, true, true, true, true, false, false, NULL, NULL, 5, 1),
+(37, 'Rue de la Jetée', 14, 230.00, 0.10, 0.02, 'MOYENNE', true, true, true, true, false, false, false, NULL, NULL, 4, 2),
+(38, 'Rue du Port', 14, 220.00, 0.08, 0.02, 'BONNE', true, true, true, true, false, false, false, NULL, NULL, 4, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- 13.2 RUES - KHEIREDDINE (secteur_id = 15)
-INSERT INTO rues (id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat, nb_criteres_coches, priorite)
+INSERT INTO rues (
+    id, nom, secteur_id, prix_reference_m2, taux, taux_base, etat,
+    eclairage_public, assainissement, eau_potable, electricite,
+    voirie, proprete, autre_critere, autre_critere_details,
+    observations, nb_criteres_coches, priorite
+)
 VALUES
-(39, 'Avenue Kheireddine', 15, 230.00, 0.10, 0.02, 'BONNE', 4, 1),
-(40, 'Rue des Pêcheurs', 15, 210.00, 0.08, 0.02, 'BONNE', 3, 1)
+(39, 'Avenue Kheireddine', 15, 230.00, 0.10, 0.02, 'BONNE', true, true, true, true, false, false, false, NULL, NULL, 4, 1),
+(40, 'Rue des Pêcheurs', 15, 210.00, 0.08, 0.02, 'BONNE', true, true, false, true, false, false, false, NULL, NULL, 3, 1)
 ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================
 -- 14. CATÉGORIES TIB - ✅ CORRECTION : Ajout du champ libelle
 -- ============================================================
-INSERT INTO categories_tib (id, code, libelle, prix_reference_m2, description, ordre_affichage, municipalite_id, actif)
+INSERT INTO categorie_tib (id, code, libelle, prix_reference_m2, description, ordre_affichage, municipalite_id, actif)
 VALUES
 (1, '1', 'Catégorie 1 - Habitat populaire', 100.00, 'Moins de 100 DT/m²', 1, 1, true),
 (2, '101', 'Catégorie 101 - Habitat standard', 130.00, '101 à 200 DT/m²', 2, 1, true),
@@ -218,7 +302,7 @@ ON CONFLICT (id) DO NOTHING;
 -- ============================================================
 -- 15. VALEURS VÉNALES
 -- ============================================================
-INSERT INTO valeurs_venales (id, zone, valeur_m2, description, municipalite_id, actif)
+INSERT INTO valeur_venale (id, zone, valeur_venale_m2, description, municipalite_id, actif)
 VALUES
 (1, 'Résidentielle', 300.00, 'Zone résidentielle - Logements', 1, true),
 (2, 'Commerciale', 600.00, 'Zone commerciale - Commerces et bureaux', 1, true),
@@ -228,11 +312,23 @@ ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================
 -- 16. PARAMÈTRES TIB
+-- Aligné avec l'entité Java ParametreTIB
 -- ============================================================
-INSERT INTO parametres_tib (id, taux_base, frais_administratifs, delai_paiement_jours, municipalite_id)
-VALUES (1, 0.02, 10.00, 30, 1)
+INSERT INTO parametre_tib (
+    id,
+    frais_administratifs,
+    coefficient_tib,
+    delai_paiement_jours,
+    date_modification
+)
+VALUES (
+    1,
+    10.00,
+    0.02,
+    30,
+    CURRENT_TIMESTAMP
+)
 ON CONFLICT (id) DO NOTHING;
-
 -- ============================================================
 -- 17. PRIX DE RÉFÉRENCE
 -- ============================================================
@@ -266,10 +362,10 @@ ON CONFLICT (id) DO NOTHING;
 SELECT setval('municipalites_id_seq', COALESCE((SELECT MAX(id) FROM municipalites), 1));
 SELECT setval('secteurs_id_seq', COALESCE((SELECT MAX(id) FROM secteurs), 1));
 SELECT setval('rues_id_seq', COALESCE((SELECT MAX(id) FROM rues), 1));
-SELECT setval('categories_tib_id_seq', COALESCE((SELECT MAX(id) FROM categories_tib), 1));
-SELECT setval('valeurs_venales_id_seq', COALESCE((SELECT MAX(id) FROM valeurs_venales), 1));
+SELECT setval('categorie_tib_id_seq', COALESCE((SELECT MAX(id) FROM categorie_tib), 1));
+SELECT setval('valeur_venale_id_seq', COALESCE((SELECT MAX(id) FROM valeur_venale), 1));
 SELECT setval('prix_reference_id_seq', COALESCE((SELECT MAX(id) FROM prix_reference), 1));
-SELECT setval('parametres_tib_id_seq', COALESCE((SELECT MAX(id) FROM parametres_tib), 1));
+SELECT setval('parametre_tib_id_seq', COALESCE((SELECT MAX(id) FROM parametre_tib), 1));
 
 -- ============================================================
 -- 19. VÉRIFICATIONS FINALES
@@ -280,13 +376,13 @@ SELECT '📌 Secteurs', COUNT(*) FROM secteurs
 UNION ALL
 SELECT '🛣️ Rues', COUNT(*) FROM rues
 UNION ALL
-SELECT '🏷️ Catégories TIB', COUNT(*) FROM categories_tib
+SELECT '🏷️ Catégories TIB', COUNT(*) FROM categorie_tib
 UNION ALL
-SELECT '💰 Valeurs vénales', COUNT(*) FROM valeurs_venales
+SELECT '💰 Valeurs vénales', COUNT(*) FROM valeur_venale
 UNION ALL
 SELECT '📊 Prix de référence', COUNT(*) FROM prix_reference
 UNION ALL
-SELECT '⚙️ Paramètres TIB', COUNT(*) FROM parametres_tib;
+SELECT '⚙️ Paramètres TIB', COUNT(*) FROM parametre_tib;
 
 -- ============================================================
 -- 20. RÉSUMÉ PAR SECTEUR
